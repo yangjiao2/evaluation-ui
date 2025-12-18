@@ -1,4 +1,4 @@
-# NVBot Evaluation UI
+# Evaluation UI
 
 A comprehensive web application for managing, monitoring, and analyzing AI bot evaluation workflows. This platform provides an intuitive interface for creating evaluation runs, tracking performance metrics, and generating detailed analytics reports.
 
