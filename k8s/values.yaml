@@ -1,0 +1,59 @@
+namespace: ns-langchain-eval-ui
+
+image:
+  name: gitlab-master.nvidia.com/jarvis-chatbot/langchain-eval-ui
+  tag: latest
+
+imageCredentials:
+  registry: https://gitlab-master.nvidia.com
+  username: nvbot-eks-deploy
+  email: nvbot-developers@exchange.nvidia.com
+  creds: "***"
+
+deployment:
+  resources:
+    limits:
+      cpu: 500m
+    requests:
+      cpu: 250m
+
+
+containerName: langchain-eval-ui
+serviceName: nvbot-evaluation
+
+containerPort:
+  exists: true
+  ports:
+    - containerPort: 3000
+      name: http
+      protocol: TCP
+
+healthCheck: /
+
+service:
+  exists: True
+  ports:
+  - port: 3000
+    targetPort: 3000
+  type: NodePort
+
+ingress:
+  enabled: true
+  servicePort: 3000
+  healthCheckInterval: 60
+
+hpa:
+  enabled: true
+  averageUtilization: 80
+
+livenessProbe: false
+
+
+# NVBot default botname
+# defaultBotName: nvbot
+
+# bots:
+#   - botName: scout
+#   - botName: avc
+#   - botName: perceptor
+#   - botName: nvsalesbot

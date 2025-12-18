@@ -1,0 +1,9 @@
+image:
+  tag: stg-{VERSION}
+  
+env: stg
+replicaCount: 1
+
+hpa:
+  maxReplicas: 5
+  minReplicas: 2

@@ -1,0 +1,9 @@
+image:
+  tag: prd-{VERSION}
+  
+env: prd
+replicaCount: 3
+
+hpa:
+  maxReplicas: 10
+  minReplicas: 3

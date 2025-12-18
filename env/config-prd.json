@@ -1,0 +1,14 @@
+{
+    "BASE_URL": "https://nvbot-api.nvidia.com/services",
+    "SERVICE_URL": "https://devbot-api.nvidia.com/evaluation",
+    "WEB_SOCKET_URL": "wss://nvbot-api.nvidia.com/websockets/",
+    "API_KEY": "Nvidia@NvBot",
+    "clientId": "e5m5NwmeXpHiqDkeQIhFfjAUZNvejcKZK-AC9C7Vjcs",
+    "authorizationEndpoint": "https://login.nvidia.com/authorize",
+    "tokenEndpoint": "https://login.nvidia.com/token",
+    "redirectUri": "https://nvbot.nvidia.com/callback",
+    "grantType": "authorization_code",
+    "applicationId": "2142abed-4c15-4b0e-94dc-f4955f68170d",
+    "allowedTracingUrls": "https://nvplatform.nvidia.com",
+    "ENV": "prd"
+}

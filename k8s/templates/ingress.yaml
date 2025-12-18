@@ -1,0 +1,31 @@
+{{- if .Values.ingress.enabled }}
+{{- $host := printf "%s-%s.nvidia.com" .Values.serviceName .Values.env }}
+{{- if eq .Values.env "prd" }}
+{{- $host = printf "%s.nvidia.com" .Values.serviceName }}
+{{ end }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "app.name" . }}-ingress-{{ .Values.env }}
+  namespace: {{ .Values.namespace }}-{{ .Values.env }}
+  labels:
+    app: {{ include "app.name" . }}
+    env: {{ .Values.env }}
+    {{- include "app.labels" . | nindent 4 }}
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: {{ $host | quote }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ include "app.name" . }}-service-{{ .Values.env }}
+            port:
+              number: {{ .Values.ingress.servicePort }}
+        path: {{ .Values.healthCheck }}
+        pathType: Prefix
+  {{- end }}

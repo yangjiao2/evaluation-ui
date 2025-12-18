@@ -1,0 +1,9 @@
+image:
+  tag: dev-{VERSION}
+
+env: dev
+replicaCount: 2
+
+hpa:
+  maxReplicas: 5
+  minReplicas: 2
